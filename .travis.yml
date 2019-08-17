@@ -1,12 +1,17 @@
 language: ruby
 rvm:
-  - 2.6.2
+- 2.6.2
 services:
-  - postgresql
+- postgresql
 install:
-  - bundle install
+- bundle install
 before_script:
-  - psql -c 'create database businesska_test;' -U postgres
+- psql -c 'create database businesska_test;' -U postgres
 script:
-  - bundle exec rake db:migrate
-  - bundle exec rspec
+- bundle exec rake db:migrate
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: Y1KrbwSIaR7LAl42eqGna8B+xoB+DO/2bYc7hoDnsqB0B8CIDsjAB9zfuQCoDEPxj4wMQdlsytRZqyWcR9OoetYWQg/MFRVG/K3EpXC73ILVD4Qf4jpfs6/61l1JmiznFqlvZYPczUogBvVdp1kAUA+atO6QUFwBYHWnSuwCPMbeafIbfXcjLw6U79vB8YKSCDUAZ149dmrv1yuGfPdhCiWgDihDeYK4UJU3NfHX0ZP699YVlJH5tbV5tEozj/AQjUBPkO8aiHxeFKZcMWlY3AmgaE3lotasQkMgRiYEKjOLNCQP9QlcmID0IJBu0mfupMFtl8TpBtp9kWKNT1TxaAPM2hqgwMdXKalcxjdtqaocqX5HqsHTAboCEmPjIgLln1VjZgRfeDnsA8bWfp+OzcadRGcXEZFGjHu69+oC3U2GwFbXozTeDfI4X5fQbAY5oFtm2ObZxWQtQk30Aa1TdIkc/ezzrx3IvvyLXjIb/pCcnDbMR8cXG2Cpk60C7YibYjwN9Au/vcpfn/SLrF3ea2jgh5SAPLtAg4J+LJqP2fl7sS8BcQvlZD2mg9YKBO6UGEIYOhKJFZ9k5lIVrXSekV9bLllCb5egHvbhvgCmFwSurYRPXYA34pkYY5RnpZtyN28nqCZqsSyz0at1njLpUb9w+Wf6wAa6+DyMAY827YU=
+  branch: develop
