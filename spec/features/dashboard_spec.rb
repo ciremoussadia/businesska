@@ -7,4 +7,6 @@ feature 'Dashboard' do
     visit root_path
     expect(page).to have_content('Dashboard')
   end
+  scenario 'does something' do
+  end
 end
